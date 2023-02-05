@@ -1,0 +1,33 @@
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.register{
+
+    padding-top: 54px;
+    margin: 0 auto;
+    max-width: 396px;
+}
+.logo-container{
+    display: flex;
+    justify-content: flex-start;
+}
+@media screen and (max-width: 540px) {
+
+    .register {
+
+        padding-top: 54px;
+        margin: 0 auto;
+        max-width: 260px;
+        align-items: center;
+
+    }
+
+    .logo-container {
+        justify-content: center;
+    }
+
+ 
+}
