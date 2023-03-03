@@ -1,34 +1,56 @@
 import React from "react";
 
 import './Profile.css';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
+import Header from "../Header/Header";
 
-function Profile(props) {
+
+function Profile({ loggedIn, onLogout, onUpdateUser, isOpen, onClick, onClose, onEditProfileClick }) {
+    const [isEditActive, setIsEditActive] = React.useState(false);
+    const currentUser = React.useContext(CurrentUserContext);
 
     return (
-        <section className="profile flex-column">
+        <main className="profile">
+            <HamburgerMenu isOpen={isOpen} onClose={onClose} />
+            <Header loggedIn={loggedIn} onClick={onClick} />
+            <section className="profile__container flex-column">
+                <h2 className="profile__title">Привет, {currentUser.name}!</h2>
+                <div className='profile__form' id='profile'>
+                    <div className='profile__info'>
+                        <label
+                            className='profile__label'
+                            htmlFor='name'>
+                            Имя
 
-            <h2 className="profile__title">Привет, Виталий</h2>
-            <form className='profile__form'>
-                <label className='profile__form-label profile__form-label-type-name'>
-                    Имя
-                    <input className='profile__form-input profile__form-input-type-name' 
-                       id='name-input'
-                       placeholder={props.name}
-                       />
-                </label>
-                <label className='profile__form-label'>
-                    E-mail
-                    <input className='profile__form-input profile__form-input-type-email' 
-                        id='email-input'
-                        placeholder={props.email}
-                        />
-                </label>
-                <button type='submit' className='profile__form-submit-button button'>Редактировать</button>
-            </form>
-            <button type='button' className='profile__logout-button button'>Выйти из аккаунта</button>  
+                        </label>
+                        <p className='profile__placeholder'>{currentUser.name}</p>
+                    </div>
+                    <div className="profile__info" >
+                        <label
+                            className='profile__label'
+                            htmlFor='email'>
+                            E-mail
+                        </label>
+                        <p className='profile__placeholder'>{currentUser.email}</p>
+                    </div>
+                    <button
+                        className='profile__form-edit-button button' // {` profile__form-submit-button button ${(!isValid || !isSubmitButtonActive) && 'button_disabled'}`}
+                        form='profile'
+                        type='button'
+                        onClick={onEditProfileClick}
+                    >Редактировать
+                    </button>
+                </div>
+                <button
+                    type='button'
+                    className='profile__logout-button button'
+                    onClick={onLogout}
+                >Выйти из аккаунта
+                </button>
 
-        </section>
-
+            </section>
+        </main>
     )
 }
 

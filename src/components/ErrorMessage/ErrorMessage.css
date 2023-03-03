@@ -1,0 +1,15 @@
+.error-message{
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    margin: 0;
+    align-self: flex-start;
+    color: #FF4062;
+    /* display: none; */
+    transition: all 0.9s ease;
+    min-height: 24px;
+}
+
+.error-message_active{
+    opacity: 1;
+}

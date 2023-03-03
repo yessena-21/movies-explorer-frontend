@@ -4,7 +4,7 @@ import logo from '../../images/logo.svg';
 
 function Logo(){
     return(
-        <Link exact to='/' className='link'><img src={logo} alt='логотип' className='logo' /></Link>
+        <Link to='/' className='link'><img src={logo} alt='логотип' className='logo' /></Link>
     )
 }
 

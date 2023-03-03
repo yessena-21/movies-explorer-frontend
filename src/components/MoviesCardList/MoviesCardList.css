@@ -1,4 +1,19 @@
 .movies-card-list{
+    width: 100%;
+    background-color: white;
+    max-width: 1280px;
+}
+.cards__list { 
+    /* width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 360px);
+    grid-column-gap: 30px;
+    grid-row-gap: 60px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    object-position: center;
+    justify-content: center; */
     padding-top: 70px;
     width: 90%;
     margin: 0 auto;
@@ -7,8 +22,15 @@
     grid-template-columns: repeat(auto-fit, minmax(364px,364px));
     grid-gap: 37px 24px;
     justify-content: center;
-    max-width: 1280px;
+   
 }
+
+  
+  .cards__not-found {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+  }
 
 @media screen and (max-width: 800px){
     .movies-card-list{
