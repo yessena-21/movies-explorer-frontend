@@ -40,17 +40,18 @@ function Movies({ searchShortFilms, searchAllFilms, checked,
     <main className='main'>
       <HamburgerMenu isOpen={isOpen} onClose={onClose} />
       <Header loggedIn={loggedIn} onClick={onClick} />
+
+      <SearchForm
+        handleSearch={handleSearch}
+        handleClearSearch={handleClearSearch}
+        windowWidth={windowWidth}
+        handleCheckBoxChange={handleCheckBoxChange}
+        isLoading={isLoading}
+        isSelected={isCheckboxSelected}
+        searchShortFilms={searchShortFilms}
+        searchAllFilms={searchAllFilms}
+        isSaved={false} />
       <section className='movies'>
-        <SearchForm
-          handleSearch={handleSearch}
-          handleClearSearch={handleClearSearch}
-          windowWidth={windowWidth}
-          handleCheckBoxChange={handleCheckBoxChange}
-          isLoading={isLoading}
-          isSelected={isCheckboxSelected}
-          searchShortFilms={searchShortFilms}
-          searchAllFilms={searchAllFilms}
-          isSaved={false} />
         <MoviesCardList
           movies={movies}
           windowWidth={windowWidth}
@@ -61,9 +62,9 @@ function Movies({ searchShortFilms, searchAllFilms, checked,
           isSaved={false}
           isLiked={isLiked}
         />
-        <LoadMore onMoreClick={handleLoadMore}  movies={movies}></LoadMore>
+        <LoadMore onMoreClick={handleLoadMore} movies={movies}></LoadMore>
       </section>
-      
+
       <Footer />
     </main>
   )

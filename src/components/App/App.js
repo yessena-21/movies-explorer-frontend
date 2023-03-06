@@ -221,36 +221,6 @@ function App() {
     localStorage.setItem('isCheckboxSelected', false)
   }
 
-  function handleSearch() {
-    console.log(' searchim');
-    getSavedMovies();
-    let sortedMovies;
-    const word = location === '/movies' ? localStorage.getItem('keyword') || '' : localStorage.getItem('keywordSaved') || '';
-    const filteredMovies = location === '/movies' ? initialMovies : savedMovies;
-
-    if (word.length > 0) {
-      //    sortedMovies = filteredMovies.filter(movie => JSON.stringify(movie).toLowerCase().includes(word.toLowerCase()));
-
-      sortedMovies = filteredMovies.filter(function (item) { return (item.description.toLowerCase().includes(word.toLowerCase()) || item.nameRU.toLowerCase().includes(word.toLowerCase())) });
-      sortedMovies.length === 0 && setMoviesMessage('Ничего не найдено');
-      console.log('отсортировали фильмы', sortedMovies);
-      if (isCheckboxSelected) {
-        location === '/movies'
-          ? setMovies(sortedMovies.filter(movie => movie.duration <= 40))
-          : setSavedMovies(sortedMovies.filter(movie => movie.duration <= 40))
-
-        console.log(savedMovies);
-      } else {
-        location === '/movies'
-          ? setMovies(sortedMovies)
-          : setSavedMovies(sortedMovies)
-      }
-    } else {
-      setMovies([]);
-      setSavedMovies([]);
-      setMoviesMessage('Нужно ввести ключевое слово');
-    }
-  }
 
   function searchNewFilms() {
     setIsLoading(true);
@@ -276,15 +246,15 @@ function App() {
   function searchSavedFilms() {
     setIsLoading(true);
 
-    
+
     const word = localStorage.getItem('keywordSaved');
 
     getSavedMovies()
-   
+
     if (word) {
 
-      
-      
+
+
       const searchedMovies = searchFilms(savedMovies, word)
       if (searchedMovies.length === 0) {
         setMoviesMessage('ничего не найдено')
@@ -298,29 +268,6 @@ function App() {
     }
 
     setIsLoading(false)
-
-
-    // api.getInitialCards()
-    //   .then((data) => {
-    //     if (word.length > 0) {
-    //       searchFilms(data, word)
-    //     } else {
-    //       setSavedMovies(data);
-    //     }
-    //   })
-
-    //   .then((res) => {
-
-    //     if (res.length === 0) {
-    //       setMoviesMessage('Ничего не найдено')
-    //       setSavedMovies([]);
-    //     } else {
-
-    //       setSavedMovies(res);
-    //     }
-    //   })
-    //   .catch((err) => setMoviesMessage('Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'))
-    //   .finally(() => setIsLoading(false))
   }
 
   function handleSetSavedCards(movies) {

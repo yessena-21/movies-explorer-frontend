@@ -3,9 +3,8 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Header from '../Header/Header';
-import LoadMore from '../LoadMore/LoadMore';
 import Footer from '../Footer/Footer';
-//import mainApi from '../../utils/MainApi'
+
 
 function Movies({ isLoading, windowWidth,
     loggedIn, isOpen, onClose, onClick, savedMovies, setIsCheckboxSelected,
