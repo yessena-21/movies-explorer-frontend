@@ -33,7 +33,6 @@ function SearchForm({ handleSearch, handleClearSearch,
         if (!isSaved) {
             const word = localStorage.getItem('keyword');
             if (word) {
-                console.log(' add word', word);
 
                 setKeyword(word)
             }
@@ -48,10 +47,8 @@ function SearchForm({ handleSearch, handleClearSearch,
 
 
     React.useEffect(() => {
-
         handleSearch()
     }, [isSelected])
-
 
     return (
         <section className='search-form'>

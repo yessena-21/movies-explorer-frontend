@@ -5,32 +5,26 @@ import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Header from '../Header/Header';
 import LoadMore from '../LoadMore/LoadMore';
 import Footer from '../Footer/Footer';
-//0import mainApi from '../../utils/MainApi'
+//import mainApi from '../../utils/MainApi'
 
 function Movies({ isLoading, windowWidth,
     loggedIn, isOpen, onClose, onClick, savedMovies, setIsCheckboxSelected,
     handleSaveMovie, handleSearch, handleDeleteMovie, moviesMessage, handleClearSearch,
-    searchAllFilms, searchShortFilms, handleSetSavedCards, isCheckboxSelected, handleCheckBoxChange, isLiked
+    searchAllFilms, searchShortFilms, isCheckboxSelected, handleCheckBoxChange, isLiked
 }) {
 
-
-    // React.useEffect(() => {
-    //     setIsCheckboxSelected(false)
-    // },
-    //     []);
-
-    // React.useEffect(() => {
-    //     mainApi.getInitialCards()
-    //         .then((res) => handleSetSavedCards(res))
-    //         .catch((err) => {
-    //             console.log(err)
-    //         });
-    // },
-    //     []);
-
+    React.useEffect(() => {
+        const checkboxStatus = JSON.parse(localStorage.getItem('isCheckboxSelected'));
+        if (checkboxStatus) {
+          setIsCheckboxSelected(checkboxStatus)
+        }
+        else {
+          setIsCheckboxSelected(false)
+        }}
+, [])
 
     return (
-        <main className='movies'>
+        <main className='main'>
             <HamburgerMenu isOpen={isOpen} onClose={onClose} />
             <Header loggedIn={loggedIn} onClick={onClick} />
             <SearchForm
@@ -42,7 +36,8 @@ function Movies({ isLoading, windowWidth,
                 isSelected={isCheckboxSelected}
                 searchShortFilms={searchShortFilms}
                 searchAllFilms={searchAllFilms}
-                isSaved={true}/>
+                isSaved={true} />
+           <section className='movies'>     
             <MoviesCardList
                 movies={savedMovies}
                 isSaved={true}
@@ -52,9 +47,9 @@ function Movies({ isLoading, windowWidth,
                 handleDeleteMovie={handleDeleteMovie}
                 moviesMessage={moviesMessage}
                 isLiked={isLiked}
-                
+
             />
-            <LoadMore />
+            </section>
             <Footer />
 
         </main>

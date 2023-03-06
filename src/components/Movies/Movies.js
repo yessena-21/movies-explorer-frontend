@@ -11,7 +11,8 @@ import Footer from '../Footer/Footer';
 function Movies({ searchShortFilms, searchAllFilms, checked,
   handleCheckBoxChange, isLoading, loggedIn, isOpen, onClose,
   onClick, windowWidth, handleSearch, handleSaveMovie,
-  handleDeleteMovie, movies, moviesMessage, handleClearSearch, setIsCheckboxSelected, isCheckboxSelected, handleSetSavedCards ,isLiked}) {
+  handleDeleteMovie, movies, moviesMessage, handleClearSearch, setIsCheckboxSelected,
+  isCheckboxSelected, handleSetMovies, isLiked, handleLoadMore, handleResize }) {
 
 
 
@@ -23,45 +24,46 @@ function Movies({ searchShortFilms, searchAllFilms, checked,
     else {
       setIsCheckboxSelected(false)
     }
+
+    const moviesList = JSON.parse(localStorage.getItem('movies'));
+    if (moviesList === null) {
+      handleSetMovies([]);
+    } else {
+      handleResize(moviesList);
+    }
+
   },
     []);
 
 
-  // React.useEffect(() => {
-  //   mainApi.getInitialCards()
-  //     .then((res) => handleSetSavedCards(res))
-  //     .catch((err) => {
-  //       console.log(err)
-  //     });
-  // },
-  //   []);
-
-
   return (
-    <main className='movies'>
+    <main className='main'>
       <HamburgerMenu isOpen={isOpen} onClose={onClose} />
       <Header loggedIn={loggedIn} onClick={onClick} />
-      <SearchForm
-        handleSearch={handleSearch}
-        handleClearSearch={handleClearSearch}
-        windowWidth={windowWidth}
-        handleCheckBoxChange={handleCheckBoxChange}
-        isLoading={isLoading}
-        isSelected={isCheckboxSelected}
-        searchShortFilms={searchShortFilms}
-        searchAllFilms={searchAllFilms}
-        isSaved={false} />
-      <MoviesCardList
-        movies={movies}
-        windowWidth={windowWidth}
-        handleSaveMovie={handleSaveMovie}
-        handleDeleteMovie={handleDeleteMovie}
-        moviesMessage={moviesMessage}
-        checked={checked}
-        isSaved={false}
-        isLiked={isLiked}
-      />
-      <LoadMore />
+      <section className='movies'>
+        <SearchForm
+          handleSearch={handleSearch}
+          handleClearSearch={handleClearSearch}
+          windowWidth={windowWidth}
+          handleCheckBoxChange={handleCheckBoxChange}
+          isLoading={isLoading}
+          isSelected={isCheckboxSelected}
+          searchShortFilms={searchShortFilms}
+          searchAllFilms={searchAllFilms}
+          isSaved={false} />
+        <MoviesCardList
+          movies={movies}
+          windowWidth={windowWidth}
+          handleSaveMovie={handleSaveMovie}
+          handleDeleteMovie={handleDeleteMovie}
+          moviesMessage={moviesMessage}
+          checked={checked}
+          isSaved={false}
+          isLiked={isLiked}
+        />
+        <LoadMore onMoreClick={handleLoadMore}  movies={movies}></LoadMore>
+      </section>
+      
       <Footer />
     </main>
   )

@@ -8,21 +8,10 @@ function MoviesCard({ data, handleSaveMovie, handleDeleteMovie, isLiked, isSaved
     const location = useLocation().pathname;
    
     function handleCardLike(e) {
-        console.log('deletim cards');
-        
+
         handleSaveMovie(data);
     }
 
-    // function handleDelete(e) {
-    //     props.deleteCard(props.card);
-    // }
-
-
-
-    // function handleSave() {
-
-    //     handleSaveMovie(data);
-    // }
 
     function handleDelete() {
         console.log('удаляем кино');

@@ -14,7 +14,10 @@ function FilterCheckbox({isSelected, searchAllFilms, searchShortFilms}) {
             searchShortFilms()
         }
         else{searchAllFilms()}
+        
     }
+
+    
     return(
         <div className='filter-checkbox'>
             <div className={`filter-checkbox__form ${
