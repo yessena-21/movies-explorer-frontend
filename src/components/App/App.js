@@ -77,7 +77,7 @@ function App() {
           console.log(' loginibsz', loggedIn);
           setLoggedIn(true);
         })
-        .catch(err => setMoviesMessage(err))
+        .catch((err) => { console.log('ошибка проверки токена', err); })
     }
   }
 
@@ -293,9 +293,7 @@ function App() {
         setSavedMovies([data, ...savedMovies]);
         setFoundSavedMovies([data, ...foundSavedMovies]);
       })
-      .catch((err) => {
-        setInfoMessage((err));
-      })
+      .catch((err) => { console.log('ошибка проверки токена', err); })
       .finally(() => setIsLoading(false))
   }
 
@@ -338,7 +336,7 @@ function App() {
         setSavedMovies(newMovies);
         setFoundSavedMovies(newMovies)
       })
-      .catch(err => setInfoMessage((err)))
+      .catch((err) => { console.log('ошибка проверки токена', err); })
   }
 
   // восстанавливаем состояния переключателя корокометражек
