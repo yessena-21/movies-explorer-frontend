@@ -45,10 +45,10 @@ function SearchForm({ handleSearch, handleClearSearch,
     }
         , [])
 
-
-    React.useEffect(() => {
-        handleSearch()
-    }, [isSelected])
+        React.useEffect(() => {
+            handleSearch()
+        }, [isSelected])
+  
 
     return (
         <section className='search-form'>
@@ -73,7 +73,7 @@ function SearchForm({ handleSearch, handleClearSearch,
 
                 </form>
                 <FilterCheckbox isSelected={isSelected} searchShortFilms={searchShortFilms}
-                    searchAllFilms={searchAllFilms} />
+                    searchAllFilms={searchAllFilms} handleSearch={handleSearch}/>
             </div>
         </section>
     )

@@ -1,7 +1,7 @@
 import React from 'react';
 import './FilterCheckbox.css';
 
-function FilterCheckbox({isSelected, searchAllFilms, searchShortFilms}) {
+function FilterCheckbox({isSelected, searchAllFilms, searchShortFilms, handleSearch}) {
     
     const [value, setValue] = React.useState('');
 
@@ -10,12 +10,11 @@ function FilterCheckbox({isSelected, searchAllFilms, searchShortFilms}) {
     }
 
     function toggleFilterCheckbox() {
-        if( isSelected === true) {
+        if(isSelected === true) {
             searchShortFilms()
         }
         else{searchAllFilms()}
-        
-    }
+       }
 
     
     return(

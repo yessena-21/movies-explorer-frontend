@@ -14,7 +14,6 @@ function MoviesCard({ data, handleSaveMovie, handleDeleteMovie, isLiked, isSaved
 
 
     function handleDelete() {
-        console.log('удаляем кино');
         handleDeleteMovie(data);
     }
 

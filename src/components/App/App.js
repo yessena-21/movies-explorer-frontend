@@ -245,16 +245,9 @@ function App() {
 
   function searchSavedFilms() {
     setIsLoading(true);
-
-
     const word = localStorage.getItem('keywordSaved');
-
     getSavedMovies()
-
     if (word) {
-
-
-
       const searchedMovies = searchFilms(savedMovies, word)
       if (searchedMovies.length === 0) {
         setMoviesMessage('ничего не найдено')
@@ -262,8 +255,6 @@ function App() {
       } else {
         localStorage.setItem('savedMovies', JSON.stringify(searchedMovies));
         setFoundSavedMovies(searchedMovies);
-        // handleResize(searchedMovies);
-        //setMovies(searchedMovies);
       }
     }
 
@@ -281,10 +272,10 @@ function App() {
 
   function getSavedMovies() {
 
-   
+
     api.getInitialCards()
-      .then((res) => { 
-        
+      .then((res) => {
+
         setSavedMovies(res);
         console.log(' получаем сохраненные фильмы', savedMovies);
         localStorage.setItem('savedMovies', JSON.stringify(res));
@@ -299,6 +290,7 @@ function App() {
     api.saveMovie(movie)
       .then((data) => {
         setSavedMovies([data, ...savedMovies]);
+        setFoundSavedMovies([data, ...foundSavedMovies]);
       })
       .catch((err) => {
         setInfoMessage((err));
@@ -337,11 +329,13 @@ function App() {
 
   // удаляем из сохраненных фильмов
   function handleDeleteSavedMovie(movie) {
+    console.log('delete film', movie);
     api.deleteMovie(movie._id)
       .then(() => {
-        getSavedMovies();
-        const newMovies = savedMovies.filter(item => item !== movie);
+        //getSavedMovies();
+        const newMovies = foundSavedMovies.filter(item => item !== movie);
         setSavedMovies(newMovies);
+        setFoundSavedMovies(newMovies)
       })
       .catch(err => setInfoMessage((err)))
   }
@@ -392,7 +386,6 @@ function App() {
 
   useEffect(() => {
     getToken();
-    console.log('fhjklsdlllsd');
     if (loggedIn) {
 
       const promises = [api.getUserInfo(), moviesApi.getMovies(), api.getInitialCards()]
