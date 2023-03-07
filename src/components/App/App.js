@@ -72,7 +72,7 @@ function App() {
     const jwt = localStorage.getItem('jwt')
     if (jwt) {
       setToken(jwt);
-      auth.checkToken(jwt)
+      auth.checkToken(token)
         .then(() => {
           console.log(' loginibsz', loggedIn);
           setLoggedIn(true);
@@ -90,14 +90,6 @@ function App() {
     setLoggedIn(false);
     localStorage.clear();
   }
-
-  const onRegister = useCallback(({ name, email, password }) => {
-    return auth.registration({ name, email, password })
-      .then((res) => {
-        return res;
-      })
-  }, [])
-
   const onLogin = ({ email, password }) => {
     setIsLoading(true)
     return auth.authorization({ email, password })
@@ -110,6 +102,14 @@ function App() {
       })
       .finally(() => setIsLoading(false))
   }
+
+  const onRegister = useCallback(({ name, email, password }) => {
+    return auth.registration({ name, email, password })
+      .then((res) => {
+        return res;
+      })
+  }, [])
+
 
   function closeHamburgerMenu() {
     setIsHamburgerMenuOpen(false)
@@ -281,10 +281,12 @@ function App() {
 
   function getSavedMovies() {
 
-    console.log(' получаем сохраненные фильмы');
+   
     api.getInitialCards()
-      .then((res) => {
+      .then((res) => { 
+        
         setSavedMovies(res);
+        console.log(' получаем сохраненные фильмы', savedMovies);
         localStorage.setItem('savedMovies', JSON.stringify(res));
       })
       .catch(() => {
@@ -356,7 +358,7 @@ function App() {
   },
     []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const foundMovies = JSON.parse(localStorage.getItem('movies'));
     if (foundMovies !== null) {
       handleResize(foundMovies);
@@ -408,7 +410,6 @@ function App() {
           if (localStorage.getItem('movies') === null) {
             setInitialMovies(moviesList);
           } else {
-            //setMovies(JSON.parse(localStorage.getItem('movies')));
             handleResize(JSON.parse(localStorage.getItem('movies')))
             setInitialMovies(moviesList);
           }
@@ -455,7 +456,8 @@ function App() {
             <Register
               onRegister={onRegister}
               showInfoTooltip={showInfoTooltip}
-              isLoading={isLoading} />
+              isLoading={isLoading}
+              onlogin={onLogin} />
           </Route>
           <ProtectedRoute
             path='/movies'

@@ -29,8 +29,10 @@
     border: none;
     margin-left: 10px;
     margin-right: auto;
+    width: 100%;
 
 }
+
 
 .search-form__input:focus{
     outline: none;
