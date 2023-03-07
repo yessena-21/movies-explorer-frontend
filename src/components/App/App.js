@@ -29,7 +29,6 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [foundSavedMovies, setFoundSavedMovies] = useState([]);
   const [initialMovies, setInitialMovies] = useState([]);
-  const [infoMessage, setInfoMessage] = React.useState('');
   const [moviesMessage, setMoviesMessage] = React.useState('');
   const [isCheckboxSelected, setIsCheckboxSelected] = useState(false)
   const [currentUser, setCurrentUser] = useState({})
@@ -47,7 +46,6 @@ function App() {
         handleCurrentUser();
         getSavedMovies()
         setLoggedIn(true);
-        //setName(res.name)
       }
     }).catch((err) => { console.log('ошибка проверки токена', err); });
   }, [])
