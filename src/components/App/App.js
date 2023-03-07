@@ -277,6 +277,7 @@ function App() {
       .then((res) => {
 
         setSavedMovies(res);
+        setFoundSavedMovies(res)
         console.log(' получаем сохраненные фильмы', savedMovies);
         localStorage.setItem('savedMovies', JSON.stringify(res));
       })
