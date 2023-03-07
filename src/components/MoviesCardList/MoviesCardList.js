@@ -18,7 +18,7 @@ function MoviesCardList({ movies, handleSaveMovie,
 
                     return (
                         <MoviesCard
-                            key={location === '/movies' ? data.id : data._id}
+                            key={data['id'] !== undefined ? data.id : data._id}
                             data={data}
                             handleSaveMovie={handleSaveMovie}
                             handleDeleteMovie={handleDeleteMovie}
