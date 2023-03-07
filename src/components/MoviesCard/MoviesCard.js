@@ -46,8 +46,6 @@ function MoviesCard({ data, handleSaveMovie, handleDeleteMovie, isLiked, isSaved
           onClick={handleImageClick}
         />
       }
-            {/* <img src={data.image !== null ? `https://api.nomoreparties.co${data.image.url}` : poster} alt={data.nameRU}
-                onClick={handleImageClick} className='movies-card__poster' /> */}
             <div className='movies-card__container'>
                 <div className='movies-card__description'>
                     <h2 className='movies-card__description-title'>{data.nameRU}</h2>
@@ -58,30 +56,6 @@ function MoviesCard({ data, handleSaveMovie, handleDeleteMovie, isLiked, isSaved
                     className={isSaved ? cardButtonClassName : cardLikeButtonClassName}
                     onClick={isSaved ? handleDelete : handleCardLike}>
                 </button>
-
-                {/* {(location === '/movies' && data.saved === true)
-                    &&
-                    <button
-                        className={`movies-card__like-button ${ data.saved ? 'movies-card__like-button_active': ''}`}
-                        type='button'
-                        onClick={handleDelete}
-                    >
-                    </button>}
-                {(location === '/movies' && data.saved !== true)
-                    &&
-                    <button
-                        className={`movies-card__like-button ${ data.saved ? 'movies-card__like-button_active': ''}`}
-                        type='button'
-                        onClick={handleSave}
-                    >
-                    </button>}
-                {location === '/saved-movies'
-                    &&
-                    <button
-                        className='movies-card__delete-button'
-                        type='button'
-                        onClick={handleDelete}
-                    />} */}
 
             </div>
         </div>

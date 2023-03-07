@@ -6,8 +6,8 @@ import HamburgerMenu from "../HamburgerMenu/HamburgerMenu";
 import Header from "../Header/Header";
 
 
-function Profile({ loggedIn, onLogout, onUpdateUser, isOpen, onClick, onClose, onEditProfileClick }) {
-    const [isEditActive, setIsEditActive] = React.useState(false);
+function Profile({ loggedIn, onLogout, isOpen, onClick, onClose, onEditProfileClick }) {
+    
     const currentUser = React.useContext(CurrentUserContext);
 
     return (
@@ -35,7 +35,7 @@ function Profile({ loggedIn, onLogout, onUpdateUser, isOpen, onClick, onClose, o
                         <p className='profile__placeholder'>{currentUser.email}</p>
                     </div>
                     <button
-                        className='profile__form-edit-button button' // {` profile__form-submit-button button ${(!isValid || !isSubmitButtonActive) && 'button_disabled'}`}
+                        className='profile__form-edit-button button'
                         form='profile'
                         type='button'
                         onClick={onEditProfileClick}

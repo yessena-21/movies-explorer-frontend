@@ -14,7 +14,6 @@ function Register({ onRegister, showInfoTooltip, onlogin }) {
         e.preventDefault();
         onRegister(values)
             .then(() => onlogin(values))
-            .then(setValues({}))
             .then(() => showInfoTooltip(false))
             .catch((err) => showInfoTooltip(true, err));
     }

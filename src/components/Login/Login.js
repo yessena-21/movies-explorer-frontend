@@ -14,7 +14,6 @@ function Login({ onLogin, showInfoTooltip,isLoading }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         onLogin(values)
-            .then(setValues({}))
             .then(() => history.push('/movies'))
             .catch((err) => showInfoTooltip(true, err));
     };
