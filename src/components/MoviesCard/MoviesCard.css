@@ -76,7 +76,7 @@
 @media screen and (max-width: 800px){
     .movies-card{
         max-width: 339px;
-        min-height: 262px;
+        height: 262px;
     }
 
     .movies-card__poster{
@@ -90,7 +90,7 @@
     
     .movies-card__description{
         max-width: 260px;
-        min-height: 45px;
+        height: 45px;
     }
    
         
@@ -99,7 +99,7 @@
 @media screen and (max-width: 500px){
     .movies-card{
         max-width: 300px;
-        min-height: 237px;
+        height: 237px;
     }
     
     .movies-card__poster{

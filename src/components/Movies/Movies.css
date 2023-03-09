@@ -1,4 +1,10 @@
-.movies{
+.main {
     max-width: 1280px;
     margin: 0 auto;
 }
+.movies{
+    max-width: 1280px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
